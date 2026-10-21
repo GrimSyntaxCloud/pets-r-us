@@ -1,4 +1,3 @@
-
 <%- include('header.html') -%>
 
     <div class="main-container">
@@ -8,10 +7,10 @@
                 <form class="contact-form" action="/edit" method="post">
                     <input name="_csrf" value="<%= csrfToken %>" type="hidden">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required autofocus placeholder="Your name.." value="<% currentUser.username || '' %>">
+                    <input type="text" id="username" name="username" required autofocus placeholder="Your name.." value="<%= currentUser.username || '' %>">
 
                     <label for="email">email</label>
-                    <input type="text" id="email" name="email" placeholder="Your email..." value="<% currentUser.email || '' %>">
+                    <input type="email" required id="email" name="email" placeholder="Your email..." value="<%= currentUser.email || '' %>">
 
                     <input type="submit" value="update" class="submit-form">
                 </form>

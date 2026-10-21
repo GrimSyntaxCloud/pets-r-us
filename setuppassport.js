@@ -1,42 +1,23 @@
-
-// Title: setuppassport.js
-// Author: Andres Macias
-// Date: 07/24/22
-// Description: This page contains the setup for passport.js
-
-let passport = require('passport');
-let LocalStrategy = require('passport-local').Strategy;
-
-let User = require('./models/users');
-
-module.exports = function () {
-    passport.serializeUser(function (user, done) {
-        done(null, user._id);
-    });
-
-    passport.deserializeUser(function (id, done) {
-        User.findById(id, function (err, user) {
-            done(err, user);
-        });
-    });
-    passport.use('login', new LocalStrategy(function (username, password, done) {
-        User.findOne({ username: username }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-                return done(null, false, {
-                    message: 'No user has that username!'
-                });
-            }
-            user.checkPassword(password, function (err, isMatch) {
-                if (err) { return done(err); }
-                if (isMatch) {
-                    return done(null, user);
-                } else {
-                    return done(null, false, {
-                        message: 'Invalid password.'
-                    });
-                }
-            });
-        });
-    }));
+const { Passport } = require('passport');
+const { Strategy } = require('passport-local');
+const User = require('./models/users');
+const { verify } = require('./lib/password');
+const { isActive } = require('./lib/retention');
+module.exports = function setupPassport(now) {
+  const passport = new Passport();
+  passport.serializeUser((user, done) => done(null, user.id));
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const user = await User.findById(id);
+      done(null, isActive(user, now()) ? user : false);
+    } catch (err) { done(err); }
+  });
+  passport.use(new Strategy(async (username, password, done) => {
+    try {
+      const user = await User.findOne({ username: username.toLowerCase() }).select('+passwordHash');
+      const valid = await verify(password, user?.passwordHash);
+      done(null, valid && isActive(user, now()) && !user.isDemo ? user : false);
+    } catch (err) { done(err); }
+  }));
+  return passport;
 };

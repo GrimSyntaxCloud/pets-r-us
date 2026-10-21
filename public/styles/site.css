@@ -23,3 +23,11 @@
 
 
 }
+
+.demo-notice { padding: 1rem; margin: 1rem auto; max-width: 70rem; background: #f2f7e8; color: #203023; font-size: 1rem; }
+.table-scroll { overflow-x: auto; }
+.main-container { overflow-wrap: anywhere; }
+img { max-width: 100%; object-fit: contain; }
+.dropdown:focus-within .dropdown-content { display:block; }
+.dropdown form { text-align: center; padding: .5rem; }
+input, select { max-width: 100%; }
