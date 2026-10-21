@@ -1,3 +1,14 @@
 <%- include('header.html') %>
-<main class="main-container"><h1><%= appPage %></h1><p role="alert"><%= message %></p><a href="/">Return home</a></main>
+<main id="main" class="error-page wrap">
+  <img
+    src="/images/clubhouse/snooze.svg"
+    width="400"
+    height="300"
+    alt="A pet resting in a cozy bed."
+  />
+  <p class="eyebrow">A little paws</p>
+  <h1><%= appPage %></h1>
+  <p role="alert"><%= message %></p>
+  <a class="button" href="/">Return home <span aria-hidden="true">↗</span></a>
+</main>
 <%- include('footer.html') %>

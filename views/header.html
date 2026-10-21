@@ -1,53 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pets-R-Us | <%= appPage %>
-    </title>
-
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+Pro:wght@300;700&display=swap"
-        rel="stylesheet">
-    <!-- font awesome icons -->
-
-    <!-- global styles -->
-    <link rel="stylesheet" href="/styles/site.css">
-    <link rel="icon" href="/images/icon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFF9EA">
+  <meta name="description" content="A little care. A lot of love. Explore the Pets-R-Us pet clubhouse: a fictional grooming, boarding, and training portfolio demo.">
+  <title><%= appPage %> · Pets-R-Us</title>
+  <link rel="stylesheet" href="/styles/site.css">
+  <link rel="icon" type="image/svg+xml" href="/images/clubhouse/paw.svg">
+  <script src="/js/menu.js" defer></script>
 </head>
-
 <body>
-    <header>
-        <nav class="mobile-menu" id="navigationContainer">
-            <a href="/">Home</a>
-            <a href="/boarding">Boarding</a>
-            <a href="/grooming">Grooming</a>
-            <a href="/training">Training</a>
-            <% if (currentUser) { %>
-                <div class="dropdown">
-                    <a href="/profile">Hello, <%= currentUser.name() %></a>
-                    <div class="dropdown-content">
-                        <a href="/appointment">Appointments</a>
-                        <a href="/edit">Edit profile</a>
-                        <form action="/logout" method="post"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><button type="submit">Log out</button></form>
-                    </div>
-                </div>
-
-                <%} else { %>
-                    <a href="/login">Login</a>
-                    <a href="/registration">Register</a>
-                    <% } %>
-                        <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-                        <a href="#navigationContainer" class="icon" aria-label="Toggle navigation" aria-expanded="false">
-                            <span id="menuIcon" aria-hidden="true">☰</span>
-                        </a>
-        </nav>
-
-    </header>
-<p class="demo-notice">Portfolio demo — use fictional details. Visitor accounts and requests expire within 96 hours of registration. <a href="/demo">View permanent sample appointments</a>.</p>
-<% if (info) { %><p class="demo-notice" role="status"><%= info %></p><% } %>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="demo-strip"><span>A pretend pet place. A real working demo.</span> <a href="/demo">Take a peek inside <span aria-hidden="true">↗</span></a></div>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Pets-R-Us home"><img src="/images/clubhouse/paw.svg" alt="" width="42" height="42"><span>pets<span class="brand-r">-r-</span>us<span class="brand-dot">.</span></span></a>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" type="button">Menu <span aria-hidden="true">☰</span></button>
+  <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+    <% for (const [path, label] of [['/grooming','Grooming'], ['/boarding','Boarding'], ['/training','Training']]) { %>
+    <a href="<%= path %>" <%- appPage === label ? 'aria-current="page"' : '' %>><%= label %></a>
+    <% } %>
+    <% if (currentUser) { %>
+    <a href="/profile" <%- appPage === 'Profile' ? 'aria-current="page"' : '' %>>My clubhouse</a>
+    <form action="/logout" method="post"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><button class="nav-logout" type="submit">Log out</button></form>
+    <a class="button button-small" href="/appointment">Plan a visit <span aria-hidden="true">↗</span></a>
+    <% } else { %>
+    <a href="/login" <%- appPage === 'Login' ? 'aria-current="page"' : '' %>>Log in</a>
+    <a class="button button-small" href="/registration">Join the club <span aria-hidden="true">↗</span></a>
+    <% } %>
+  </nav>
+</header>
+<% if (info) { %><div class="flash" role="status"><%= info %></div><% } %>

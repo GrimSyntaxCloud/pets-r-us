@@ -1,151 +1,64 @@
-<!-- 
-  Title: Pets-R-Us Assignment
-  Author: Andres Macias
-  Date: 07/24/22
-  Description: This page contains the training services 
--->
-
-<%- include('header.html') -%>
-<div id="landingPageHeader">
-    <img class="" src="/images/Pets-R-Us.png" alt="logo" width="320" height="320">
-</div>
-<div class="main-container">
-    <section id="intro">
-        <h1 class="section-header">Dog Training</h1>
-        <div class="section-content">
-            <div class="content-description" id="introDescription">
-                <p>Pets-R-Us dog training lessons can teach your dog how to act properly at home and while traveling, regardless of whether you have a young puppy, an older dog, or a rescue. Positive reinforcement is used by our accredited pet trainers to deliver engaging and successful group and private lessons.</p>
-            </div>
-        </div>
-    </section>
-    <section id="dogTrainingSection">
-        <div class="section-content">
-            <div id="container">
-                <div class="content-left">
-                    <h1 class="section-header">Puppy Level 1</h1>
-                    <p>This 6-week introductory group class focuses on proper socialization and teaches desired behaviors and cues to address common puppy challenges, such as:</p>
-                    <ul class="remove-bullets">
-                        <li>Potty Training</li>
-                        <li>Chewing and Teething</li>
-                        <li>Digging and More</li>
-                    </ul>
-                    <p>For puppies 2-4 months</p>
-                    <p>$100</p>
-                </div>
-                <div class="content-description">
-                    <h1 class="section-header">Puppy Level 2</h1>
-                    <p>This 6-week intermediate group class expands on the behaviors and cues learned in Puppy Level 1, introducing:</p>
-                    <ul class="remove-bullets">
-                        <li>Learning how to establish behaviors as routines</li>
-                        <li>Introduction to fun games to mentally stimulate your puppy</li>
-                        <li>Advanced training cues</li>
-                    </ul>
-                    <p>For puppies 4-6 months</p>
-                    <p>$150</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <h1 class="section-header">Potty Training Seminar</h1>
-        <div class="section-content">
-            <div id="container">
-                <div class="content-description">
-                    <p>This results-focused one-hour seminar covers effective potty-training tips and techniques for puppies or dogs of any age.</p>
-                    <p>$75</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="dogTrainingSection">
-        <div class="section-content">
-            <div id="container">
-                <div class="content-left">
-                    <h1 class="section-header">Young Adult Level 1</h1>
-                    <p>This 6-week introductory group class is designed to introduce techniques to reinforce behaviors learned in our level 1 course while continuing to build on establishing a daily routine.</p>
-                    <p>For dogs that have completed our puppy level courses</p>
-                    <p>$100</p>
-                </div>
-                <div class="content-description">
-                    <h1 class="section-header">Young Adult Level 2</h1>
-                    <p>This 6-week intermediate group class expands on behaviors and cues learned in Young Adult Level 1, introducing:</p>
-                    <ul class="remove-bullets">
-                        <li>Introduction to alone play</li>
-                        <li>Adding more distance, duration and distractions to help reinforce behaviors</li>
-                    </ul>
-                    <p>For dogs that completed our Young Adult level 1 course</p>
-                    <p>$150</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="section-content">
-            <div id="container">
-                <div class="content-left">
-                    <h1 class="section-header">Adult Level 1</h1>
-                    <p>This 6-week introductory group class is designed to help you better communicate with and train your dog. Dogs will learn behaviors & cues, such as:</p>
-                    <ul class="remove-bullets">
-                        <li>Drop it</li>
-                        <li>Wait</li>
-                        <li>Loose Leash walking</li>
-                        <li>tips to help control jumping, barking and digging</li>
-                    </ul>
-                    <p>For dogs over 6 months</p>
-                    <p>$100</p>
-                </div>
-                <div class="content-description">
-                    <h1 class="section-header">Adult Level 2</h1>
-                    <p>This 6-week intermediate group class expands on behaviors and cues learned in Adult Level 1, introducing:</p>
-                    <ul class="remove-bullets">
-                        <li>Introduction to advanced training techniques</li>
-                        <li>Advanced fun games to mentally stimulate your dog</li>
-                    </ul>
-                    <p>For dogs that completed our Adult level 1 course</p>
-                    <p>$150</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="dogTrainingSection">
-        <h1 class="section-header">Separation Anxiety Course</h1>
-        <div class="section-content">
-            <div id="container">
-                <div class="content-description">
-                    <p>This four-week group program is designed to teach your dog how to be at home alone and relax while addressing separation anxiety. Your dog will pick up on:</p>
-                    <ul class="remove-bullets">
-                        <li>How to relax when you are away</li>
-                        <li>Techniques to calm themselves when stressed</li>
-                        <li>Developing healthy routines</li>
-                    </ul>
-                    <p>$75</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <h1 class="section-header">Meet our Trainers</h1>
-        <div class="section-content">
-            <div id="container">
-                <div class="content-left">
-                        <div class="trainer-picture">
-                            <p>Sara - Trainer</p>
-                            <img src="/images/trainer-1.jpeg" alt="trainer-picture" height="320">
-                            <p>Sara knew dogs would always be a part of his life after working at a veterinary clinic and doing volunteer work for rescue organizations. He takes pleasure in bringing out the lively puppy at the core of a scared dog. He specializes in forming deep bonds with pets.</p>
-                        </div>
-                </div>
-                <div class="content-description">
-                        <div class="trainer-picture">
-                            <p>Mike - Trainer</p>
-                            <img src="/images/trainer-2.jpeg" alt="trainer-picture" height="320">
-                            <p>Since his father brought home a yellow Labrador when he was three, Mike has had an obsession with working dogs. he was in charge of three dogs, two birds, and a horse by the time he started high school. Mike trained in a number of dog sports after graduation, including agility, flyball, treibball, barn hunt, nose work, tricks, rally obedience, and weight pull, as he was keen to further his understanding of the canine world.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</div>
-
-<%- include('footer.html') -%>
+<%- include('header.html') %>
+<main id="main">
+  <section class="service-hero wrap">
+    <div>
+      <p class="eyebrow">Learn & play / Training</p>
+      <h1>Good habits.<br /><em>Happy humans.</em></h1>
+      <p class="intro">
+        Life together is a learning adventure. Explore classes for tiny first
+        steps, everyday manners, and the joy of finally getting that new trick.
+      </p>
+      <a class="button" href="/appointment"
+        >Find their next adventure <span aria-hidden="true">↗</span></a
+      >
+    </div>
+    <div class="service-art yellow">
+      <img
+        src="/images/clubhouse/play.svg"
+        width="400"
+        height="300"
+        alt="A happy dog sitting next to a ball with a gold star overhead."
+      />
+      <p>Will learn for snacks. Obviously.</p>
+    </div>
+  </section>
+  <section class="catalog wrap">
+    <div class="catalog-head">
+      <div>
+        <p class="eyebrow">The learning lineup</p>
+        <h2>Every good dog<br />starts <em>somewhere.</em></h2>
+      </div>
+      <p>
+        These fictional classes preserve the original project’s training
+        catalog. Prices are examples; requests do not enroll a pet.
+      </p>
+    </div>
+    <div class="price-grid">
+      <% const classes = [
+       ['Puppy / 2–4 months','Puppy level one','A first introduction to socialization, routines, and puppy life.','6 weeks','$100'],
+      ['Puppy / 4–6 months','Puppy level two','Build on the basics with new cues, games, and everyday habits.','6 weeks','$150'],
+      ['Young adult / After puppy classes','Young adult level one','Keep the momentum going with everyday manners and practice.','6 weeks','$100'],
+      ['Young adult / After level one','Young adult level two','Take familiar skills a step further, one small win at a time.','6 weeks','$150'],
+      ['Adult / Over 6 months','Adult level one','Start with useful foundations: wait, drop it, and walking together.','6 weeks','$100'],
+      ['Adult / After level one','Adult level two','More practice, new challenges, and better teamwork.','6 weeks','$150'],
+      ['Focused learning','Potty training seminar','An introduction to consistent routines for the little accidents in life.','1 hour','$75'],
+      ['Focused learning','Separation anxiety course','An example course about helping pets feel more comfortable with time apart.','4 weeks','$75']
+    ];
+    for (const [stage,title,description,duration,price] of classes) { %>
+      <article class="price-card">
+        <p class="eyebrow"><%= stage %></p>
+        <h3><%= title %></h3>
+        <p><%= description %></p>
+        <p class="price"><%= price %> <small>/ <%= duration %></small></p>
+      </article>
+      <% } %>
+    </div>
+  </section>
+  <section class="simple-cta wrap">
+    <h2>A little progress.<br />A lot to <em>celebrate.</em></h2>
+    <a class="button" href="/appointment"
+      >Try a training request <span aria-hidden="true">↗</span></a
+    >
+  </section>
+</main>
+<%- include('footer.html') %>

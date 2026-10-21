@@ -1,32 +1,79 @@
-<!-- 
- Title: Pets-R-Us Assignment
- Author: Andres Macias
- Date: 07/24/22
- Description: This page contains the registration form and list of active users 
--->
-
-<%- include('header.html') -%>
-
-    <div id="landingPageHeader">
-        <img class="" src="/images/Pets-R-Us.png" alt="logo" width="320" height="320">
-    </div>
-    <div class="main-container">
-        <section id="contact">
-            <h1 class="section-header">Registration Form</h1>
-            <div class="section-content">
-                <form class="contact-form" action="/registration" method="post">
-                    <input name="_csrf" value="<%= csrfToken %>" type="hidden">
-                    <label for="txtUserName">Username</label>
-                    <input type="text" id="txtUserName" name="txtUserName" required autofocus placeholder="Your name..">
-
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" minlength="12" maxlength="128" required autocomplete="new-password" placeholder="Enter a password..">
-
-                    <label for="email">Email</label>
-                    <input type="email" required id="email" name="email" placeholder="Enter Email...">
-                    <input type="submit" value="Register" class="submit-form">
-                </form>
-            </div>
-        </section>
-    </div>
+<%- include('header.html') %>
+<main id="main" class="account-layout wrap">
+  <section class="account-story">
+    <p class="eyebrow">The clubhouse / Join the fun</p>
+    <h1>Good company.<br /><em>Great little club.</em></h1>
+    <p>
+      A space for your demo appointment requests, and the pets who inspire them.
+      Come on in.
+    </p>
+    <img
+      src="/images/clubhouse/pet-pals.svg"
+      width="400"
+      height="300"
+      alt=""
+      aria-hidden="true"
+    />
+  </section>
+  <section class="form-panel" aria-labelledby="form-title">
+    <h2 id="form-title">Make yourself at home</h2>
+    <p class="form-intro">Create a demo account to try the full experience.</p>
+    <form action="/registration" method="post">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <div class="field">
+        <label for="txtUserName">Username</label
+        ><input
+          type="text"
+          id="txtUserName"
+          name="txtUserName"
+          required
+          minlength="3"
+          maxlength="32"
+          pattern="[A-Za-z0-9_-]{3,32}"
+          autocomplete="username"
+          aria-describedby="txtUserName-hint"
+        /><small id="txtUserName-hint"
+          >3–32 letters, numbers, underscores, or hyphens.</small
+        >
+      </div>
+      <div class="field">
+        <label for="email">Email</label
+        ><input
+          type="email"
+          id="email"
+          name="email"
+          required
+          maxlength="254"
+          autocomplete="email"
+          placeholder="petpal@example.com"
+        />
+      </div>
+      <div class="field">
+        <label for="password">Password</label
+        ><input
+          type="password"
+          id="password"
+          name="password"
+          required
+          minlength="12"
+          maxlength="128"
+          autocomplete="new-password"
+          aria-describedby="password-hint"
+        /><small id="password-hint"
+          >12–128 characters. Choose a unique demo password.</small
+        >
+      </div>
+      <button class="button" type="submit">
+        Join the club <span aria-hidden="true">↗</span>
+      </button>
+    </form>
+    <p class="form-foot">
+      Already part of the pack? <a href="/login">Log in</a>
+    </p>
+    <p class="privacy-note">
+      Portfolio demo: use fictional details. Accounts and requests expire within
+      96 hours of registration. No real bookings are made.
+    </p>
+  </section>
+</main>
 <%- include('footer.html') %>

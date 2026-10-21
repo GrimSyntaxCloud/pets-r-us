@@ -1,114 +1,153 @@
-<!-- 
- Title: Pets-R-Us Assignment
- Author: Andres Macias
- Date: 07/24/22
- Description: This page contains the landing page for the pets-r-us web 340 project 
--->
-
-<%- include('header.html') -%>
-
-    <div id="landingPageHeader">
-        <img class="" src="/images/Pets-R-Us.png" alt="logo" width="320" height="320">
+<%- include('header.html') %>
+<main id="main">
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span class="tiny-flower" aria-hidden="true">✳</span> For pets. And
+        their people.
+      </p>
+      <h1>Big love for<br />little <em>weirdos.</em></h1>
+      <p class="hero-intro">
+        The zoomies. The head tilts. The very dramatic sighs. We love every bit.
+        A happy little place for grooming, sleepovers, and learning new tricks.
+      </p>
+      <div class="button-row">
+        <a
+          class="button"
+          href="<%= currentUser ? '/appointment' : '/registration' %>"
+          >Come hang with us <span aria-hidden="true">↗</span></a
+        ><a class="text-link" href="#care">Find their happy place ↓</a>
+      </div>
+      <p class="little-note">
+        All personalities welcome. Especially the goofy ones.
+      </p>
     </div>
-    <div class="main-container">
-        <section id="intro">
-            <h1 class="section-header">Our Promise to you.</h1>
-            <div class="section-content">
-                <div class="content-description" id="introDescription">
-                    <p>We offer our clients expert pet grooming services at curbside convenience to your house or place of business. Our goal is to treat your pets with the same respect that we would expect for our own.</p>
-                </div>
-
-            </div>
-        </section>
-        <section id="dogOfWeek">
-            <h1 class="section-header">Dog of the Week</h1>
-            <div class="section-content">
-                <div id="container">
-                    <div class="content-left">
-                        <div class="content-title">
-                            <p>Ferdinand</p>
-                        </div>
-                        <div class="content-image">
-                            <img src="/images/weekly-dog/week1.jpeg" height='143' alt="dog of the week">
-                        </div>
-                    </div>
-                    <div class="content-description" id="dogOfWeekDescription">
-                        <p>I may not win any fetch awards, but I will definitely win your heart with my insane snuggling abilities. If snacking, snuggling, and watching sitcoms is your thing, we might be best friends.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <section id="locations">
-            <h1 class="section-header">Locations</h1>
-            <div class="section-content">
-                <div class="content-description" id="locationsDescription">
-                    <p>Established in the Omaha area in 2018. We have extensive experience. We enjoy caring for, connecting with, and building long-term relationships with animals. We make certain that your pet receives the best possible care and grooming experience. Visit us in one of our two locations.</p>
-                    <br>
-                    <p>Omaha, NE</p>
-                    <p>10000 California St Suite 1221, Omaha, NE 68114</p>
-                    <br>
-                    <p>Council Bluffs, IA</p>
-                    <p>3626 Metro Dr, IA 51501</p>
-                </div>
-            </div>
-        </section>
-        <section id="locationHours">
-            <h1 class="section-header">Store Hours</h1>
-            <div class="section-content" >
-                <div class="content-description" id="displayHours">
-                    <p>Monday:<span class="daily-hours">7:30 AM - 3:30 PM</span></p>
-                    <p>Tuesday:<span class="daily-hours">7:30 AM - 3:30 PM</span></p>
-                    <p>Wednesday:<span class="daily-hours">7:30 AM - 3:30 PM</span></p>
-                    <p>Thursday:<span class="daily-hours">11:00 AM - 3:30 PM</span></p>
-                    <p>Friday:<span class="daily-hours">11:00 AM - 3:30 PM</span></p>
-                    <p>Saturday:<span class="daily-hours">8:00 AM - 3:30 PM</span></p>
-                    <p>Sunday:<span class="daily-hours">8:00 AM - 3:30 PM</span></p>
-                </div>
-            </div>
-        </section>
-        <section id="testimonials">
-            <h1 class="section-header">Testimonials</h1>
-            <div class="section-content">
-                <div class="content-description">
-                    <div class="customer-quote">
-                        <p>“We love the grooming service! My baby always looks like he went to the salon after his
-                            appointments!”</p>
-                        <div class="profile-picture">
-                            <img src="/images/profile_1.png" alt="profile-picture" width="64" height="64">
-
-                        </div>
-                    </div>
-                    <div class="customer-quote">
-                        <p>“I know I can trust the staff to treat my dog like family when I go on long trips.”</p>
-                        <div class="profile-picture">
-                            <img src="/images/profile_2.png" alt="profile-picture" width="64" height="64">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="contact">
-            <h1 class="section-header">Get In Touch</h1>
-            <div class="section-content">
-                <form class="contact-form" action="#">
-                    <label for="txtFirstName">First Name</label>
-                    <input type="text" id="txtFirstName" name="txtFirstName" placeholder="Your name..">
-
-                    <label for="txtLastName">Last Name</label>
-                    <input type="text" id="txtLastName" name="txtLastname" placeholder="Your last name..">
-
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email" placeholder="Enter Email...">
-
-                    <label for="txtMessage">Message</label>
-                    <textarea id="txtMessage" name="txtMessage" placeholder="Write something.."
-                        style="height:200px"></textarea>
-
-                    <button class="submit-form">Send</button>
-                </form>
-            </div>
-        </section>
+    <div class="hero-art">
+      <span class="art-note note-top">very good company</span
+      ><img
+        class="pet-pals"
+        src="/images/clubhouse/pet-pals.svg"
+        width="640"
+        height="600"
+        alt="A golden dog with a lolling tongue and a smiling lilac cat, sitting side by side."
+      /><span class="love-stamp" aria-hidden="true"
+        >100%<br /><small>pet people</small><span>♡</span></span
+      ><button class="boop" type="button" aria-describedby="boop-status">
+        Boop! <span aria-hidden="true">♡</span></button
+      ><span class="boop-message" id="boop-status" role="status"
+        >A little love goes a long way.</span
+      >
     </div>
-    <%- include('footer.html') -%>
+  </section>
+  <div class="joy-strip" aria-hidden="true">
+    <span>More belly rubs</span><b>✳</b><span>Less ordinary</span><b>✳</b
+    ><span>Good days. Great dogs.</span><b>✳</b><span>Big cat energy</span
+    ><b>✳</b>
+  </div>
+  <section id="care" class="section wrap">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">The good stuff</p>
+        <h2>Whatever their vibe,<br />we've got their <em>tail.</em></h2>
+      </div>
+      <p>
+        A fresh ’do, a cozy snooze, or a proud “look what I learned.” Make room
+        for more good days.
+      </p>
+    </div>
+    <div class="care-grid">
+      <a class="care-card lilac" href="/grooming"
+        ><div class="card-top">
+          <span>01 / Fresh & fluffy</span
+          ><span class="arrow-circle" aria-hidden="true">↗</span>
+        </div>
+        <img
+          src="/images/clubhouse/bath.svg"
+          width="400"
+          height="300"
+          alt="A happy dog peeking out of a lilac bathtub full of bubbles."
+          loading="lazy"
+        />
+        <h3>Good hair.<br />Great dog.</h3>
+        <p>Baths, brushes, and fresh-start energy.</p>
+        <span class="card-link">Explore grooming</span></a
+      >
+      <a class="care-card peach" href="/boarding"
+        ><div class="card-top">
+          <span>02 / Stay & snooze</span
+          ><span class="arrow-circle" aria-hidden="true">↗</span>
+        </div>
+        <img
+          src="/images/clubhouse/snooze.svg"
+          width="400"
+          height="300"
+          alt="A curled-up pet snoozing in a soft purple bed."
+          loading="lazy"
+        />
+        <h3>A home away<br />from your lap.</h3>
+        <p>Cozy corners for their next sleepover.</p>
+        <span class="card-link">Explore boarding</span></a
+      >
+      <a class="care-card yellow" href="/training"
+        ><div class="card-top">
+          <span>03 / Learn & play</span
+          ><span class="arrow-circle" aria-hidden="true">↗</span>
+        </div>
+        <img
+          src="/images/clubhouse/play.svg"
+          width="400"
+          height="300"
+          alt="A golden dog sitting proudly beside a lilac ball."
+          loading="lazy"
+        />
+        <h3>Small steps.<br />Big tail wags.</h3>
+        <p>New tricks. A little patience. Lots of joy.</p>
+        <span class="card-link">Explore training</span></a
+      >
+    </div>
+  </section>
+  <section class="spotlight wrap">
+    <div class="dog-photo">
+      <img
+        src="/images/weekly-dog/week1.jpeg"
+        width="4000"
+        height="5300"
+        loading="lazy"
+        alt="Ferdinand, a smiling golden retriever, against a blue background."
+      /><span class="photo-label">Employee of the nap ♡</span>
+    </div>
+    <div class="spotlight-copy">
+      <p class="eyebrow">Main character of the week</p>
+      <h2>
+        Meet Ferdinand.<br /><em>Professional<br />heart stealer.</em>
+      </h2>
+      <p>
+        “I may not win any fetch awards, but I will definitely win your heart
+        with my insane snuggling abilities.”
+      </p>
+      <p>
+        If snacking, snuggling, and watching sitcoms is your thing, you might be
+        best friends.
+      </p>
+      <div class="personality-tags">
+        <span>Expert snuggler</span><span>Snack enthusiast</span
+        ><span>10/10 good boy</span>
+      </div>
+    </div>
+  </section>
+  <section class="club-cta wrap">
+    <span class="cta-doodle" aria-hidden="true">✳</span>
+    <p class="eyebrow">Your next happy little adventure</p>
+    <h2>Come for the care.<br />Stay for the <em>tail wags.</em></h2>
+    <p>
+      Try the clubhouse: create a demo account, explore the services, and save
+      an appointment request.
+    </p>
+    <a
+      class="button"
+      href="<%= currentUser ? '/appointment' : '/registration' %>"
+      >Let’s make a little happy <span aria-hidden="true">↗</span></a
+    ><span class="cta-heart" aria-hidden="true">♡</span>
+  </section>
+</main>
+<%- include('footer.html') %>

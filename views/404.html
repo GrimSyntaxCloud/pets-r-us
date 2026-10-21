@@ -1,1 +1,16 @@
-<%- include('header.html') %><main class="main-container"><h1>Page not found</h1><a href="/">Return home</a></main><%- include('footer.html') %>
+<%- include('header.html') %>
+<main id="main" class="error-page wrap">
+  <img
+    src="/images/clubhouse/play.svg"
+    width="400"
+    height="300"
+    alt="A dog waiting patiently beside a ball."
+  />
+  <p class="eyebrow">404 / A little off-leash</p>
+  <h1>This page went<br />for a <em>walk.</em></h1>
+  <p>We couldn’t find that page. Let’s get you back to familiar territory.</p>
+  <a class="button" href="/"
+    >Head back home <span aria-hidden="true">↗</span></a
+  >
+</main>
+<%- include('footer.html') %>

@@ -1,17 +1,77 @@
 <%- include('header.html') %>
-<main class="main-container">
-  <h1><%= demo ? 'Sample appointments' : 'Your profile' %></h1>
+<main id="main" class="dashboard wrap">
+  <div class="dashboard-heading">
+    <div>
+      <p class="eyebrow">
+        The clubhouse / <%= demo ? 'A little look inside' : 'Your little corner' %>
+      </p>
+      <h1>
+        <%= demo ? 'Meet the' : 'Hello,' %><br /><em
+          ><%= demo ? 'demo pack.' : 'pet person.' %></em
+        >
+      </h1>
+      <p>
+        <%= demo ? 'Fictional, read-only sample appointments. These permanent examples stay put while visitor accounts expire after 96 hours.' : 'Your profile, your plans, and a little more happy on the horizon.' %>
+      </p>
+    </div>
+    <a
+      class="button"
+      href="<%= demo ? (currentUser ? '/appointment' : '/registration') : '/appointment' %>"
+      ><%= demo ? 'Try it yourself' : 'Plan a visit' %>
+      <span aria-hidden="true">↗</span></a
+    >
+  </div>
   <% if (!demo) { %>
-    <p>Username: <%= currentUser.username %></p><p>Email: <%= currentUser.email %></p>
-    <p>Your demo account expires: <%= currentUser.expiresAt.toISOString() %> (UTC)</p>
-    <p><a href="/edit">Edit profile</a> · <a href="/appointment">Request an appointment</a></p>
-  <% } else { %><p>Fictional, read-only examples. These sample records do not expire.</p><% } %>
-  <h2>Appointment requests</h2>
-  <% if (!appointments.length) { %><p>No appointment requests yet.</p><% } %>
-  <div class="table-scroll"><table id="activeUsers"><thead><tr><th>Name</th><th>Email</th><th>Service</th></tr></thead><tbody>
-  <% for (const appointment of appointments) { %>
-    <tr><td><%= appointment.firstName %> <%= appointment.lastName %></td><td><%= appointment.email %></td><td><%= appointment.service %></td></tr>
+  <div class="account-details">
+    <dl>
+      <dt>Username</dt>
+      <dd><%= currentUser.username %></dd>
+    </dl>
+    <dl>
+      <dt>Email</dt>
+      <dd><%= currentUser.email %></dd>
+    </dl>
+    <dl>
+      <dt>Demo account expires (UTC)</dt>
+      <dd>
+        <%= currentUser.expiresAt.toISOString().replace('T', ' ').slice(0, 16) %>
+      </dd>
+    </dl>
+    <a class="text-link" href="/edit">Edit profile ↗</a>
+  </div>
   <% } %>
-  </tbody></table></div>
+  <h2><%= demo ? 'Sample appointments' : 'Your appointment requests' %></h2>
+  <% if (!appointments.length) { %>
+  <div class="empty-state">
+    <img
+      src="/images/clubhouse/snooze.svg"
+      width="400"
+      height="300"
+      alt="A pet snoozing in a soft bed."
+    />
+    <h3>A quiet little corner. For now.</h3>
+    <p>No appointment requests yet. Let’s put something happy on the list.</p>
+    <a class="button" href="/appointment"
+      >Make your first request <span aria-hidden="true">↗</span></a
+    >
+  </div>
+  <% } else { %>
+  <div class="appointments">
+    <% for (const [index, appointment] of appointments.entries()) { %>
+    <article class="appointment-row">
+      <span class="appointment-number" aria-hidden="true"
+        ><%= String(index + 1).padStart(2, '0') %></span
+      >
+      <h3><%= appointment.firstName %> <%= appointment.lastName %></h3>
+      <p><%= appointment.email %></p>
+      <span class="service-badge"><%= appointment.service %></span>
+    </article>
+    <% } %>
+  </div>
+  <% } %>
+  <p class="privacy-note">
+    Demo requests only. No dates are reserved, emails sent, or payments
+    collected.
+  </p>
 </main>
 <%- include('footer.html') %>
