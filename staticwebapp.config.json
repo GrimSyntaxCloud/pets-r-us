@@ -1,0 +1,51 @@
+{
+  "platform": {
+    "apiRuntime": "node:22"
+  },
+  "routes": [
+    {
+      "route": "/",
+      "rewrite": "/api/site/home"
+    },
+    {
+      "route": "/login",
+      "rewrite": "/api/site/login"
+    },
+    {
+      "route": "/registration",
+      "rewrite": "/api/site/registration"
+    },
+    {
+      "route": "/profile",
+      "rewrite": "/api/site/profile"
+    },
+    {
+      "route": "/appointment",
+      "rewrite": "/api/site/appointment"
+    },
+    {
+      "route": "/edit",
+      "rewrite": "/api/site/edit"
+    },
+    {
+      "route": "/logout",
+      "rewrite": "/api/site/logout"
+    },
+    {
+      "route": "/demo",
+      "rewrite": "/api/site/demo"
+    },
+    {
+      "route": "/grooming",
+      "rewrite": "/api/site/grooming"
+    },
+    {
+      "route": "/boarding",
+      "rewrite": "/api/site/boarding"
+    },
+    {
+      "route": "/training",
+      "rewrite": "/api/site/training"
+    }
+  ]
+}

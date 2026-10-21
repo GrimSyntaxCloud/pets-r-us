@@ -9,7 +9,7 @@ module.exports = function createApp({ store, secret, secure = false, now = () =>
   if (!secret || secret.length < 32 || secret.startsWith('replace-')) throw new Error('Set SESSION_SECRET to at least 32 random characters.');
   if (!store) throw new Error('A persistent session store is required.');
   const app = express();
-  // Configure trusted proxies explicitly when adapting to the chosen Azure host.
+  // The managed adapter supplies an encrypted socket; never trust client proxy headers.
   app.disable('x-powered-by');
   app.set('views', path.join(__dirname, 'views'));
   app.engine('html', require('ejs').__express);
@@ -36,7 +36,7 @@ module.exports = function createApp({ store, secret, secure = false, now = () =>
     delete req.session.info;
     next();
   });
-  const authLimit = rateLimit({ windowMs: 15 * 60 * 1000, limit: 30, standardHeaders: 'draft-8', legacyHeaders: false });
+  const authLimit = rateLimit({ windowMs: 15 * 60 * 1000, limit: 30, keyGenerator: () => 'pets-demo', standardHeaders: 'draft-8', legacyHeaders: false });
   app.use(['/login', '/registration'], (req, res, next) => req.method === 'POST' ? authLimit(req, res, next) : next());
   app.use(require('./routes')({ passport, now }));
   app.use((req, res) => res.status(404).render('404', { appPage: 'Not found' }));

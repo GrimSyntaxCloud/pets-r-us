@@ -1,0 +1,29 @@
+name: Expire visitor demo data
+on:
+  schedule:
+    - cron: '29 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: demo-cleanup
+  cancel-in-progress: false
+jobs:
+  cleanup:
+    if: vars.DEMO_CLEANUP_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: azure
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci --omit=dev --ignore-scripts --no-audit --no-fund
+      - run: node azure/maintenance.js
+        env:
+          MONGODB_URI: ${{ secrets.DEMO_CLEANUP_MONGODB_URI }}
+          MONGODB_DATABASE: portfolio-demos
+          MONGODB_COLLECTION: bcrs_demo
