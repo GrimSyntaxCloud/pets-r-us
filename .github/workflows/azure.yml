@@ -1,0 +1,65 @@
+name: Pets-R-Us checks and Azure demo deploy
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pets-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NG_CLI_ANALYTICS: 'false'
+      MONGOMS_DOWNLOAD_DIR: ${{ github.workspace }}/.cache/mongodb
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm audit --audit-level=low
+      - run: npm test
+      - run: npm run package:azure
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pets-r-us
+          path: pets-r-us.zip
+          retention-days: 3
+  deploy:
+    needs: checks
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.AZURE_DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: azure
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: pets-r-us
+      - run: unzip -q pets-r-us.zip -d release
+      - uses: Azure/static-web-apps-deploy@v1
+        id: webapp
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: release/site
+          api_location: release/api
+          output_location: ''
+          skip_app_build: true
+          skip_api_build: true
+      - name: Verify Cosmos connectivity
+        env:
+          APP_URL: ${{ steps.webapp.outputs.static_web_app_url }}
+        run: |
+          for attempt in $(seq 1 24); do
+            if curl --fail --silent --show-error --max-time 10 "${APP_URL%/}/api/health"; then exit 0; fi
+            sleep 5
+          done
+          exit 1
