@@ -1,63 +1,91 @@
-<!-- 
-  Title: boarding.html
-  Author: Andres Macias
-  Date: 07/24/22
-  Description: This page contains the boarding services page 
--->
-
-<%- include('header.html') -%>
-
-<section id="boardingPageHeader">
-    <img src="/images/Pets-R-Us.png" alt="logo" width="320" height="320">
-</section>
-<div>
-    <section>
-        <h1 class="section-header">Boarding Services</h1>
-        <div id="cardContainer">
-            <div class="card">
-                <img class="card-image" src="/images/private-suite.jpeg" alt="dog in big bed">
-                <div class="card-content">
-                    <h2 class="card-title">Private Suite</h2>
-                    <p>Larger, more private rooms with a relaxing diffuser, a white noise machine, and our unbelievably comfortable Superb Sleeper bed are available.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-image" src="/images/single-room.jpeg" alt="dog in small bed">
-                <div class="card-content">
-                    <h2 class="card-title">Single Room</h2>
-                    <p>Individual accommodations that are cozy and secure and come with relaxing spray.</p>
-                </div>
-            </div>
+<%- include('header.html') %>
+<main id="main">
+  <section class="service-hero wrap">
+    <div>
+      <p class="eyebrow">Stay & snooze / Boarding</p>
+      <h1>Sleepovers.<br /><em>Upgraded.</em></h1>
+      <p class="intro">
+        For the blanket burrowers, the pillow thieves, and the champions of the
+        afternoon nap. A cozy little getaway, made for their kind of comfy.
+      </p>
+      <a class="button" href="/appointment"
+        >Plan a little sleepover <span aria-hidden="true">↗</span></a
+      >
+    </div>
+    <div class="service-art peach">
+      <img
+        src="/images/clubhouse/snooze.svg"
+        width="400"
+        height="300"
+        alt="A pet snoozing in a plush bed beneath a little yellow moon."
+      />
+      <p>Do not disturb. Dreaming of snacks.</p>
+    </div>
+  </section>
+  <section class="catalog wrap">
+    <div class="catalog-head">
+      <div>
+        <p class="eyebrow">Room for a little relaxation</p>
+        <h2>Choose their <em>cozy.</em></h2>
+      </div>
+      <p>
+        Fictional room options and demo rates. No availability is reserved and
+        no payment is collected.
+      </p>
+    </div>
+    <div class="price-grid">
+      <article class="price-card">
+        <p class="eyebrow">01 / The cozy classic</p>
+        <h3>Single room</h3>
+        <p>
+          A comfortable personal nook for winding down after a big day of being
+          a very good pet.
+        </p>
+        <p class="price">$50 <small>/ night</small></p>
+        <div class="personality-tags">
+          <span>Personal space</span><span>Cozy bed</span
+          ><span>Nap-friendly</span>
         </div>
-    </section>
-    <section id="boadingDetails">
-        <h1 class="section-header">Overnight stays include:</h1>
-        <div class="section-content">
-            <div class="content-description">
-               <ul class="boarding-details-list">
-                <li>Hotel Hosts on-site 24/7</li>
-                <li>Convenient drop-off and pickup times</li>
-                <li>Personalized play time</li>
-                <li>Unlimited relief walks</li>
-                <li>Complimentary calming pheromones</li>
-               </ul>
-            </div>
-            <div class="content-description">
-                <h2>5 Night Stay</h2>
-                <ul class="boarding-details-list">
-                    <li>Private suite start at $75 per night</li>
-                    <li>Single room: $50 per night</li>
-                    <li>Single Dog: $60 + $75 = $135</li>
-                    <li>Two Dogs: $120 + $75 = $195</li>
-                    <li>Three Dogs: $180 + $75 = $255</li>
-                </ul>
-                <h2>Extended Night Pricing</h2>
-                <ul class="boarding-details-list">
-                    <li>After 5 nights $85 per night</li>
-                </ul>
-            </div>
+      </article>
+      <article class="price-card">
+        <p class="eyebrow">02 / Room to sprawl</p>
+        <h3>Private suite</h3>
+        <p>
+          A little more room, a comfy bed, and white noise. For the pet who
+          likes their naps with a side of luxury.
+        </p>
+        <p class="price">From $75 <small>/ night</small></p>
+        <div class="personality-tags">
+          <span>Extra room</span><span>White noise</span
+          ><span>Big stretch energy</span>
         </div>
-    </section>
-</div>
-
-<%- include('footer.html') -%>
+      </article>
+    </div>
+  </section>
+  <section class="steps">
+    <div class="wrap">
+      <h2>Pack a little<br /><em>piece of home.</em></h2>
+      <ol>
+        <li>
+          <h3>The familiar favorites</h3>
+          <p>A much-loved blanket or toy makes the packing list.</p>
+        </li>
+        <li>
+          <h3>The everyday routine</h3>
+          <p>Mealtimes, little habits, and everything that makes them, them.</p>
+        </li>
+        <li>
+          <h3>The happy reunion</h3>
+          <p>Save a little energy for the welcome-home wiggles.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="simple-cta wrap">
+    <h2>Sweet dreams, <em>little one.</em></h2>
+    <a class="button" href="/appointment"
+      >Try a boarding request <span aria-hidden="true">↗</span></a
+    >
+  </section>
+</main>
+<%- include('footer.html') %>

@@ -6,11 +6,24 @@ The earlier Heroku deployment has been replaced by a [live Azure demo](https://w
 
 ## How it works
 
-Express 5 renders the original EJS/HTML templates. Passport handles login, Node's built-in scrypt hashes passwords, and Mongoose persists users and appointment requests. Sessions use MongoDB via `connect-mongo`, with HTTP-only, SameSite cookies. Every form submission, including logout, uses a session-bound CSRF token. Registration and login requests are rate limited.
+Express 5 renders the EJS/HTML pages on the server. Passport handles login, Node's built-in scrypt hashes passwords, and Mongoose persists users and appointment requests. Sessions use MongoDB via `connect-mongo`, with HTTP-only, SameSite cookies. Every form submission, including logout, uses a session-bound CSRF token. Registration and login requests are rate limited.
 
 Appointments reference the authenticated user's stable database ID. Visitors cannot choose another owner, see another account's history, or set demo/expiry flags. The former public account/email directory has been removed. The appointment form and save handler now work, and duplicate usernames are enforced by a database index.
 
 This is a demonstration, not a real pet-services booking system: requests do not reserve time slots, send email, or accept payments. Use fictional personal details and a unique demo password.
+
+## Pet clubhouse design
+
+The site has a warm, playful visual identity across the homepage, service catalog, registration/login, profile, and appointment forms. Original SVG pet illustrations, a small keyboard-accessible “boop” interaction, responsive navigation, and reduced-motion support are implemented with plain CSS and JavaScript. There is no paid design service, animation library, external font request, or new hosting dependency.
+
+- Shared navigation and footer: `views/header.html` and `views/footer.html`.
+- Design system and responsive layouts: `public/styles/site.css`.
+- Navigation and the optional pet interaction: `public/js/menu.js`.
+- Original illustrations: `public/images/clubhouse/`.
+- Self-hosted Fraunces and DM Sans fonts: `public/fonts/`, with their SIL Open Font License files.
+- Ferdinand’s existing project photo remains in `public/images/weekly-dog/`.
+
+Service prices are fictional catalog examples. The earlier nonfunctional contact form has been replaced by links into the working account and appointment flow. The redesign does not change the database schema, authentication, retention policy, or Azure resource configuration.
 
 ## Local setup
 
@@ -62,7 +75,7 @@ Integration tests use a disposable real local MongoDB process. They exercise reg
 
 ## Azure deployment
 
-The Azure deployment uses Static Web Apps **Free**, with the original Express/EJS pages served through managed Node.js HTTP functions. Route rewrites keep the original page URLs. Assets are static; accounts, appointments, and sessions remain in Cosmos DB for MongoDB. `npm run package:azure` builds the explicit deployment package; `azure/handler.js` adapts requests without starting a listening server or logging private responses.
+The Azure deployment uses Static Web Apps **Free**, with Express/EJS pages served through managed Node.js HTTP functions. Route rewrites keep the original page URLs. Assets are static; accounts, appointments, and sessions remain in Cosmos DB for MongoDB. `npm run package:azure` builds the explicit deployment package; `azure/handler.js` adapts requests without starting a listening server or logging private responses.
 
 Azure settings are server-only: `MONGODB_URI` (a collection-scoped credential), `MONGODB_DATABASE=portfolio-demos`, `SESSION_SECRET` (a random secret), and optional `DEMO_MAINTENANCE=true`. Collections `pets_users`, `pets_appointments`, and `pets_sessions` share a 400 RU/s database pool with the other demos. No paid hosting or additional throughput is required. Keep the account cap at 1,000 RU/s and the subscription spending limit enabled; never upgrade an expired trial automatically.
 

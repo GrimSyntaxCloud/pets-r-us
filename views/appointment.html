@@ -1,39 +1,83 @@
-<!-- 
-
-  Title: Pets-R-Us Assignment
-  Author: Andres Macias
-  Date: 07/24/22
-  Description: This page contains the appointment form 
--->
-
-<%- include('header.html') -%>
-
-    <div id="landingPageHeader">
-        <img class="" src="/images/Pets-R-Us.png" alt="logo" width="320" height="320">
-    </div>
-    <div class="main-container">
-        <section id="contact">
-            <h1 class="section-header">Appointments</h1>
-            <div class="section-content">
-                <form class="contact-form" action="/appointment" method="post">
-                    <input name="_csrf" value="<%= csrfToken %>" type="hidden">
-                    
-                    <label for="firstName">First name</label>
-                    <input type="text" id="firstName" name="firstName" required autofocus placeholder="Your name..">
-                    <label for="lastName">Last name</label>
-                    <input type="text" id="lastName" name="lastName" required placeholder="Your name..">
-
-                    <label for="email">Email</label>
-                    <input type="email" required id="email" name="email" placeholder="Enter Email...">
-
-                    <label for="service">Service</label><select name="service" id="service" required>
-                        <option value="grooming">Grooming</option>
-                        <option value="boarding">Boarding</option>
-                        <option value="training">Training</option>
-                </select>
-                    <input type="submit" value="Request Appointment" class="submit-form">
-                </form>
-            </div>
-        </section>
-    </div>
-    <%- include('footer.html') -%>
+<%- include('header.html') %>
+<main id="main" class="account-layout wrap">
+  <section class="account-story">
+    <p class="eyebrow">The clubhouse / Plan a visit</p>
+    <h1>Make room<br />for <em>happy.</em></h1>
+    <p>
+      A pamper day, a sleepover, or a brand-new skill. Pick a little adventure
+      and save your demo request.
+    </p>
+    <img
+      src="/images/clubhouse/play.svg"
+      width="400"
+      height="300"
+      alt=""
+      aria-hidden="true"
+    />
+  </section>
+  <section class="form-panel" aria-labelledby="form-title">
+    <h2 id="form-title">What’s the plan?</h2>
+    <p class="form-intro">
+      This form saves a request to your account. It does not reserve a time slot
+      or send an email.
+    </p>
+    <form action="/appointment" method="post">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <div class="field-row">
+        <div class="field">
+          <label for="firstName">First name</label
+          ><input
+            type="text"
+            id="firstName"
+            name="firstName"
+            required
+            maxlength="60"
+            autocomplete="given-name"
+          />
+        </div>
+        <div class="field">
+          <label for="lastName">Last name</label
+          ><input
+            type="text"
+            id="lastName"
+            name="lastName"
+            required
+            maxlength="60"
+            autocomplete="family-name"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label for="email">Email</label
+        ><input
+          type="email"
+          id="email"
+          name="email"
+          required
+          maxlength="254"
+          autocomplete="email"
+          value="<%= currentUser.email || '' %>"
+        />
+      </div>
+      <div class="field">
+        <label for="service">A little something for them</label
+        ><select name="service" id="service" required>
+          <option value="grooming">Grooming</option>
+          <option value="boarding">Boarding</option>
+          <option value="training">Training</option>
+        </select>
+      </div>
+      <button class="button" type="submit">
+        Save demo request <span aria-hidden="true">↗</span>
+      </button>
+    </form>
+    <p class="form-foot">
+      Changed your mind? <a href="/profile">Back to my clubhouse</a>
+    </p>
+    <p class="privacy-note">
+      Portfolio demo: use fictional details. Accounts and requests expire within
+      96 hours of registration. No real bookings are made.
+    </p>
+  </section>
+</main>
+<%- include('footer.html') %>

@@ -1,20 +1,62 @@
-<%- include('header.html') -%>
-
-    <div class="main-container">
-        <section id="edit">
-            <h1 class="section-header">Edit Your Profile</h1>
-            <div class="section-content">
-                <form class="contact-form" action="/edit" method="post">
-                    <input name="_csrf" value="<%= csrfToken %>" type="hidden">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required autofocus placeholder="Your name.." value="<%= currentUser.username || '' %>">
-
-                    <label for="email">email</label>
-                    <input type="email" required id="email" name="email" placeholder="Your email..." value="<%= currentUser.email || '' %>">
-
-                    <input type="submit" value="update" class="submit-form">
-                </form>
-            </div>
-        </section>
-    </div>
-    <%- include('footer.html') -%>
+<%- include('header.html') %>
+<main id="main" class="account-layout wrap">
+  <section class="account-story">
+    <p class="eyebrow">The clubhouse / Your details</p>
+    <h1>A little<br /><em>freshen-up.</em></h1>
+    <p>Keep your clubhouse profile feeling like you.</p>
+    <img
+      src="/images/clubhouse/bath.svg"
+      width="400"
+      height="300"
+      alt=""
+      aria-hidden="true"
+    />
+  </section>
+  <section class="form-panel" aria-labelledby="form-title">
+    <h2 id="form-title">Edit your profile</h2>
+    <p class="form-intro">Changes keep your original account expiry date.</p>
+    <form action="/edit" method="post">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <div class="field">
+        <label for="username">Username</label
+        ><input
+          type="text"
+          id="username"
+          name="username"
+          required
+          minlength="3"
+          maxlength="32"
+          pattern="[A-Za-z0-9_-]{3,32}"
+          autocomplete="username"
+          value="<%= currentUser.username || '' %>"
+          aria-describedby="username-hint"
+        /><small id="username-hint"
+          >3–32 letters, numbers, underscores, or hyphens.</small
+        >
+      </div>
+      <div class="field">
+        <label for="email">Email</label
+        ><input
+          type="email"
+          id="email"
+          name="email"
+          required
+          maxlength="254"
+          autocomplete="email"
+          value="<%= currentUser.email || '' %>"
+        />
+      </div>
+      <button class="button" type="submit">
+        Save changes <span aria-hidden="true">↗</span>
+      </button>
+    </form>
+    <p class="form-foot">
+      All set? <a href="/profile">Back to my clubhouse</a>
+    </p>
+    <p class="privacy-note">
+      Portfolio demo: use fictional details. Accounts and requests expire within
+      96 hours of registration. No real bookings are made.
+    </p>
+  </section>
+</main>
+<%- include('footer.html') %>

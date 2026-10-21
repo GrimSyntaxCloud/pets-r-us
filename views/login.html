@@ -1,30 +1,62 @@
-<!-- 
-  Title: Pets-R-Us Assignment
-  Author: Andres Macias
-  Date: 07/24/22
-  Description: This page contains the login form 
--->
-
-<%- include('header.html') -%>
-<div id="landingPageHeader">
-    <img class="" src="/images/Pets-R-Us.png" alt="logo" width="320" height="320">
-</div>
-    <div class="main-container">
-        <section id="login">
-            <h1 class="section-header">Log in</h1>
-            <% if (loginFailed) { %><p role="alert">Login failed. Check your details; demo accounts expire after 96 hours.</p><% } %>
-            <div class="section-content">
-                <form class="contact-form" action="/login" method="post">
-                    <input name="_csrf" value="<%= csrfToken %>" type="hidden">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required autofocus placeholder="Your name..">
-
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Enter a password..">
-
-                    <input type="submit" value="Log in" class="submit-form">
-                </form>
-            </div>
-        </section>
-    </div>
-    <%- include('footer.html') -%>
+<%- include('header.html') %>
+<main id="main" class="account-layout wrap">
+  <section class="account-story">
+    <p class="eyebrow">The clubhouse / Welcome back</p>
+    <h1>Oh hey,<br /><em>pet person.</em></h1>
+    <p>Your little corner of the clubhouse is right where you left it.</p>
+    <img
+      src="/images/clubhouse/snooze.svg"
+      width="400"
+      height="300"
+      alt=""
+      aria-hidden="true"
+    />
+  </section>
+  <section class="form-panel" aria-labelledby="form-title">
+    <h2 id="form-title">Come on in</h2>
+    <p class="form-intro">
+      Log in to see your profile and appointment requests.
+    </p>
+    <% if (loginFailed) { %>
+    <p class="error-message" role="alert">
+      Login failed. Check your details; demo accounts expire after 96 hours.
+    </p>
+    <% } %>
+    <form action="/login" method="post">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <div class="field">
+        <label for="username">Username</label
+        ><input
+          type="text"
+          id="username"
+          name="username"
+          required
+          autocomplete="username"
+          maxlength="32"
+        />
+      </div>
+      <div class="field">
+        <label for="password">Password</label
+        ><input
+          type="password"
+          id="password"
+          name="password"
+          required
+          autocomplete="current-password"
+          maxlength="128"
+        />
+      </div>
+      <button class="button" type="submit">
+        Log in <span aria-hidden="true">↗</span>
+      </button>
+    </form>
+    <p class="form-foot">
+      New around here? <a href="/registration">Join the club</a>
+    </p>
+    <p class="privacy-note">
+      Portfolio demo: use fictional details. Accounts and requests expire within
+      96 hours of registration. No real bookings are made.
+    </p>
+  </section>
+</main>
+<%- include('footer.html') %>

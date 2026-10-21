@@ -1,98 +1,106 @@
-<!-- 
-  Title: grooming.html
-  Author: Andres Macias
-  Date: 07/24/22
-  Description: This page contains the grooming service page 
--->
-
-<%- include('header.html') -%>
-
-    <div id="groomingPageHeader">
-        <img class="brand-logo" src="/images/Pets-R-Us.png" alt="logo" width="320" height="320">
+<%- include('header.html') %>
+<main id="main">
+  <section class="service-hero wrap">
+    <div>
+      <p class="eyebrow">Fresh & fluffy / Grooming</p>
+      <h1>From scruffy<br />to <em>stunning.</em></h1>
+      <p class="intro">
+        A little less bedhead. A little more strut. Explore feel-good grooming
+        for the dog who deserves their own main-character moment.
+      </p>
+      <a class="button" href="/appointment"
+        >Plan a pamper day <span aria-hidden="true">↗</span></a
+      >
     </div>
-    <div id="groomingContainer">
-        <section id="groomingServices">
-            <h1 class="section-header" id="groomingTitle">Grooming Services</h1>
-            <div id="cardContainer">
-                <div class="card">
-                    <img class="card-image" src="/images/grooming-images/bath-brush.jpeg" alt="dog getting brushed">
-                    <div class="card-content">
-                        <h2 class="card-title grooming-service-title">Bubble bath and coat brushing</h2>
-                        <p>Bath, nail trim, ear cleaning, scissoring feet & pad shaving, sanitary trim, anal gland
-                            cleaning & more.</p>
-                        <p class="grooming-service-price">$25-$40</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-image" src="/images/grooming-images/bath-brush-deshedding.jpeg"
-                        alt="dog bath with deshedding shampoo">
-                    <div class="card-content">
-                        <h2 class="card-title grooming-service-title">Bubble bath and coat brushing with deShedding
-                            shampoo</h2>
-                        <p>Bath, haircut, deShedding shampoo & solution, nail trim, ear cleaning, extra brushing,
-                            sanitary trim & more.</p>
-                        <p class="grooming-service-price">$50-$75</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-image" src="/images/grooming-images/bath-haircut.jpeg" alt="dog getting haircut">
-                    <div class="card-content">
-                        <h2 class="card-title grooming-service-title">Bubble bath with a blow-out</h2>
-                        <p>Bath, deShedding shampoo & solution, nail trim, ear cleaning, extra brushing, blow-out,
-                            sanitary trim & more.</p>
-                        <p class="grooming-service-price">$20-$40</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-image" src="/images/grooming-images/bath-haircut-deshedding.jpeg"
-                        alt="dog getting haircut with deshedding shampoo">
-                    <div class="card-content">
-                        <h2 class="card-title grooming-service-title">Bubble bath and haircut with light dematting</h2>
-                        <p>Bath, haircut, brushing, light dematting, nail trim, scissoring feet & pad shaving, ear
-                            cleaning, sanitary trim & more.</p>
-                        <p class="grooming-service-price">$20-$35</p>
-                    </div>
-                </div>
-            </div>
-            <p class="disclaimer">**<i>Prices may vary by store, breed, coat condition & service time. Pet age, health &
-                    vaccination requirements apply. Subject to availability.</i></p>
-        </section>
-        <section id="groomingProcesses">
-            <h1 class="section-header">Our Process</h1>
-            <div class="section-content">
-                <div class="content-description" id="processDetails">
-                    <p>Depending on your dog's size, coat type, and the services you select, our grooming appointments
-                        might last anywhere between two and four hours.</p>
-                    <br>
-                    <p><strong>1. Five to ten minutes for a hands-on pet assessment</strong></p>
-                    <p>Your pet's skin, coat, ears, nails, and teeth will be evaluated by one of our safety-certified
-                        salon staff so that their specific needs may be met. While our stylists do keep an eye out for
-                        any behavioral or health issues, this is a perfect opportunity to let us know of any other
-                        concerns, preferences, or unique requirements.</p>
-                    <br>
-                    <p><strong>2. Brushing and trimming (10–30 minutes) (pre-bath steps</strong></p>
-                    <p>Before giving your pet a bath, a pet stylist will first brush, comb, and clip any extra hair or
-                        tangles off them. They will also clean the pet's ears and cut its nails.</p>
-                    <br>
-                    <p><strong>3. A soothing bath: 10 to 30 minutes</strong></p>
-                    <p>Bath time becomes a peaceful experience thanks to Pets-R-Us's soothing bath system. Your pet will
-                        first be washed by your salon professional using the shampoo and conditioner that you chose at
-                        check-in. Our entire line of shampoos and conditioners is pH-balanced specifically for pets and
-                        offers gentle washing without irritating your pet's skin.</p>
-                    <br>
-                    <p><strong>4. Special Drying: More than 30 minutes</strong></p>
-                    <p>Your pet's face, ears, and tail will first be gently dried with a cloth. Our dryers have varying
-                        speeds and are not heated. Each pet is carefully dried using the best way for safety and comfort
-                        because various breeds have varied needs.</p>
-                    <br>
-                    <p><strong>5. Customized Haircut & Finishing Touches: 30 minutes or longer</strong></p>
-                    <p>After your pet has been washed and blow-dried, your stylist may guarantee there are no further
-                        tangles and give them the best-looking haircut by finishing the haircut. If your pet merely had
-                        a wash or de-shedding service, this time will be used to finish brushing them, touch up their
-                        nails, clean their ears, and make any final preparations before they are picked up.</p>
-                </div>
-            </div>
-        </section>
+    <div class="service-art lilac">
+      <img
+        src="/images/clubhouse/bath.svg"
+        width="400"
+        height="300"
+        alt="A dog enjoying a bubbly bath in a lilac tub."
+      />
+      <p>Wash. Fluff. Repeat the compliments.</p>
     </div>
-    
-<%- include('footer.html') -%>
+  </section>
+  <section class="catalog wrap">
+    <div class="catalog-head">
+      <div>
+        <p class="eyebrow">The glow-up menu</p>
+        <h2>Pick their <em>pamper.</em></h2>
+      </div>
+      <p>
+        Illustrative demo prices. These packages showcase the service catalog;
+        requests do not make real bookings.
+      </p>
+    </div>
+    <div class="price-grid">
+      <article class="price-card">
+        <p class="eyebrow">01 / The fresh start</p>
+        <h3>Bubble bath & brush</h3>
+        <p>
+          A bath and coat brushing for a simple, fresh finish. A reset for their
+          next adventure.
+        </p>
+        <p class="price">$25–$40 <small>/ visit</small></p>
+      </article>
+      <article class="price-card">
+        <p class="eyebrow">02 / Less fluff on the sofa</p>
+        <h3>Bath & de-shedding</h3>
+        <p>
+          A bubble bath, coat brushing, and de-shedding shampoo for the very
+          fluffy members of the family.
+        </p>
+        <p class="price">$50–$75 <small>/ visit</small></p>
+      </article>
+      <article class="price-card">
+        <p class="eyebrow">03 / Big blowout energy</p>
+        <h3>Bath & blow-out</h3>
+        <p>
+          A bubbly wash and blow-out. For those occasions when being adorable
+          just isn't quite enough.
+        </p>
+        <p class="price">$20–$40 <small>/ visit</small></p>
+      </article>
+      <article class="price-card">
+        <p class="eyebrow">04 / The full little makeover</p>
+        <h3>Bath & haircut</h3>
+        <p>
+          A bath, haircut, and light de-matting. A tidy new look with all their
+          personality left intact.
+        </p>
+        <p class="price">$20–$35 <small>/ visit</small></p>
+      </article>
+    </div>
+  </section>
+  <section class="steps">
+    <div class="wrap">
+      <h2>A happier<br /><em>hair day.</em></h2>
+      <ol>
+        <li>
+          <h3>Meet the fluff</h3>
+          <p>
+            Start with a conversation about their coat, routine, and comfort.
+          </p>
+        </li>
+        <li>
+          <h3>Wash & spruce</h3>
+          <p>
+            Picture a bath, brush, and the finishing touches in your chosen
+            package.
+          </p>
+        </li>
+        <li>
+          <h3>Bring on the compliments</h3>
+          <p>A fresh look. The same lovable little character.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="simple-cta wrap">
+    <h2>Ready for their <em>close-up?</em></h2>
+    <a class="button" href="/appointment"
+      >Try a grooming request <span aria-hidden="true">↗</span></a
+    >
+  </section>
+</main>
+<%- include('footer.html') %>
