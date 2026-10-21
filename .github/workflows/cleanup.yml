@@ -26,4 +26,3 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.DEMO_CLEANUP_MONGODB_URI }}
           MONGODB_DATABASE: portfolio-demos
-          MONGODB_COLLECTION: bcrs_demo

@@ -2,7 +2,7 @@
 
 Pets-R-Us is a Bellevue University web-development coursework project by Andres Macias for a fictional pet-service business. It demonstrates a full-stack flow: browse grooming, boarding, and training services; register and sign in; edit your own profile; and submit and view appointment requests.
 
-The earlier Heroku demo is offline. This repair prepares the application for a future deployment; **no Azure resources or live database have been changed and no new live URL is available yet**.
+The earlier Heroku deployment has been replaced by a [live Azure demo](https://white-sand-0e657a60f.1.azurestaticapps.net). Hosting uses Static Web Apps Free and an existing free-tier Cosmos DB account.
 
 ## How it works
 
@@ -60,12 +60,12 @@ npm audit
 
 Integration tests use a disposable real local MongoDB process. They exercise registration, login/logout, duplicate usernames, CSRF failures, repeated appointments, ownership isolation, validation, profile editing, expiry boundaries, cleanup, and sample-data preservation. They do not connect to Atlas or Azure and are not a Cosmos compatibility test.
 
-## Azure deployment is pending approval
+## Azure deployment
 
 The Azure deployment uses Static Web Apps **Free**, with the original Express/EJS pages served through managed Node.js HTTP functions. Route rewrites keep the original page URLs. Assets are static; accounts, appointments, and sessions remain in Cosmos DB for MongoDB. `npm run package:azure` builds the explicit deployment package; `azure/handler.js` adapts requests without starting a listening server or logging private responses.
 
 Azure settings are server-only: `MONGODB_URI` (a collection-scoped credential), `MONGODB_DATABASE=portfolio-demos`, `SESSION_SECRET` (a random secret), and optional `DEMO_MAINTENANCE=true`. Collections `pets_users`, `pets_appointments`, and `pets_sessions` share a 400 RU/s database pool with the other demos. No paid hosting or additional throughput is required. Keep the account cap at 1,000 RU/s and the subscription spending limit enabled; never upgrade an expired trial automatically.
 
-Cosmos MongoDB 4.2 does not use the local TTL setup. The API checks expiry and cleans expired visitor records on access. An hourly public-repository Actions job uses the environment secret `DEMO_CLEANUP_MONGODB_URI` and repository variable `DEMO_CLEANUP_ENABLED=true`; it logs counts only. Data becomes unusable at 96 hours. Physical deletion happens on the next successful cleanup, usually within an hour. GitHub can delay schedules or disable them after 60 days without repository activity, so check Actions during upkeep. Fictional sample appointments have no expiry and remain read-only.
+The app pins the current Mongoose 8 patch because its MongoDB driver supports the existing Cosmos MongoDB 4.2 protocol; Mongoose 9 requires a newer protocol. Cosmos MongoDB 4.2 does not use the local TTL setup. The API checks expiry and cleans expired visitor records on access. An hourly public-repository Actions job uses the environment secret `DEMO_CLEANUP_MONGODB_URI` and repository variable `DEMO_CLEANUP_ENABLED=true`; it logs counts only. Data becomes unusable at 96 hours. Physical deletion happens on the next successful cleanup, usually within an hour. GitHub can delay schedules or disable them after 60 days without repository activity, so check Actions during upkeep. Fictional sample appointments have no expiry and remain read-only.
 
 The deployment workflow runs tests and dependency audit before publishing. `AZURE_DEPLOY_ENABLED=true` enables deployment, using the `azure` environment secret `AZURE_STATIC_WEB_APPS_API_TOKEN`. The Azure adapter test covers form submission, CSRF, secure cookies, persistent sessions, and appointments. The normal local server and local database preparation remain available as described above.
