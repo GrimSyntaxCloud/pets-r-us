@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 let pending;
 async function connect() {
- if (!pending) pending = mongoose.connect(process.env.MONGODB_URI, { dbName: process.env.MONGODB_DATABASE || 'portfolio-demos', autoIndex: false, autoCreate: false, serverSelectionTimeoutMS: 10000, maxPoolSize: 5 }).catch(error => { pending = undefined; throw error; });
+ if (!pending) pending = mongoose.connect(process.env.MONGODB_URI, { dbName: process.env.MONGODB_DATABASE || 'portfolio-demos', retryWrites: false, autoIndex: false, autoCreate: false, serverSelectionTimeoutMS: 10000, maxPoolSize: 5 }).catch(error => { pending = undefined; throw error; });
  await pending;
  return mongoose.connection;
 }
