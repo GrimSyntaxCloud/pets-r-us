@@ -12,6 +12,7 @@
     <div class="main-container">
         <section id="login">
             <h1 class="section-header">Log in</h1>
+            <% if (loginFailed) { %><p role="alert">Login failed. Check your details; demo accounts expire after 96 hours.</p><% } %>
             <div class="section-content">
                 <form class="contact-form" action="/login" method="post">
                     <input name="_csrf" value="<%= csrfToken %>" type="hidden">

@@ -1,24 +1,12 @@
-
-// Title: appointments.js
-// Author: Andres Macias
-// Date: 07/24/22
-// Description: This page contains the schema for appointments
-
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
-const SALT_FACTOR = 10;
-
-
-let appointmentSchema = new mongoose.Schema({
-    userName: {type: String, required: true, unique: true},
-    firstName: {type: String, required: true},
-    lastName: {type: String, required: true},
-    email: { type: String, required: true},
-    service: {type: String, required: true},
-    createdAt: { type: Date, default: Date.now },
-   
-});
-
-
-
-module.exports = mongoose.model('Appointment', appointmentSchema);
+const schema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, required: true },
+  firstName: { type: String, required: true, maxlength: 60 },
+  lastName: { type: String, required: true, maxlength: 60 },
+  email: { type: String, required: true, maxlength: 254 },
+  service: { type: String, required: true, enum: ['grooming', 'boarding', 'training'] },
+  createdAt: { type: Date, default: Date.now, immutable: true },
+  expiresAt: { type: Date, immutable: true },
+  isDemo: { type: Boolean, default: false, immutable: true }
+}, { autoIndex: false, autoCreate: false, collection: 'pets_appointments' });
+module.exports = mongoose.model('Appointment', schema);

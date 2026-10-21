@@ -15,7 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Source+Sans+Pro:wght@300;700&display=swap"
         rel="stylesheet">
     <!-- font awesome icons -->
-    <script src="https://kit.fontawesome.com/8b2cac046d.js" crossorigin="anonymous"></script>
+
     <!-- global styles -->
     <link rel="stylesheet" href="/styles/site.css">
     <link rel="icon" href="/images/icon.png">
@@ -33,7 +33,8 @@
                     <a href="/profile">Hello, <%= currentUser.name() %></a>
                     <div class="dropdown-content">
                         <a href="/appointment">Appointments</a>
-                        <a href="/logout">Logout</a>
+                        <a href="/edit">Edit profile</a>
+                        <form action="/logout" method="post"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><button type="submit">Log out</button></form>
                     </div>
                 </div>
 
@@ -42,9 +43,11 @@
                     <a href="/registration">Register</a>
                     <% } %>
                         <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                            <i class="fas fa-bars" id="menuIcon"></i>
+                        <a href="#navigationContainer" class="icon" aria-label="Toggle navigation" aria-expanded="false">
+                            <span id="menuIcon" aria-hidden="true">☰</span>
                         </a>
         </nav>
 
     </header>
+<p class="demo-notice">Portfolio demo — use fictional details. Visitor accounts and requests expire within 96 hours of registration. <a href="/demo">View permanent sample appointments</a>.</p>
+<% if (info) { %><p class="demo-notice" role="status"><%= info %></p><% } %>

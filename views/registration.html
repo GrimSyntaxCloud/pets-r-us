@@ -20,33 +20,13 @@
                     <input type="text" id="txtUserName" name="txtUserName" required autofocus placeholder="Your name..">
 
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter a password..">
+                    <input type="password" id="password" name="password" minlength="12" maxlength="128" required autocomplete="new-password" placeholder="Enter a password..">
 
                     <label for="email">Email</label>
-                    <input type="text" id="email" name="email" placeholder="Enter Email...">
+                    <input type="email" required id="email" name="email" placeholder="Enter Email...">
                     <input type="submit" value="Register" class="submit-form">
                 </form>
             </div>
         </section>
-        <section id="users">
-            <h1 class="section-header">Active Users</h1>
-            <div class="section-content">
-                <table id="activeUsers">
-                    <tr>
-                        <th>Email</th>
-                        <th>User Name</th>
-                    </tr>
-                <% users.forEach(function(user) { %>
-                    <tr>
-                        <td><a href="/users/<%= user.username %>">
-                            <%= user.name() %>
-                          </a></td>
-                          <td><%= user.email %></td>
-                    </tr>
-                    </div>
-                    <% }) %>
-                </table>
-            </div>
-        </section>
     </div>
-    <%- include('footer.html') -%>
+<%- include('footer.html') %>

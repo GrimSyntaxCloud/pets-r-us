@@ -1,52 +1,17 @@
-<!-- 
- Title: Pets-R-Us Assignment
- Author: Andres Macias
- Date: 07/24/22
- Description: This page contains the user profile and appointment history 
--->
-
-
 <%- include('header.html') %>
-<section id="boardingPageHeader">
-    <img src="/images/Pets-R-Us.png" alt="logo" width="320" height="320">
-</section>
-
-    <div class="main-container">
-        <section id="userProfile">
-            <h1 class="section-header">
-                Profile
-            </h1>
-            <p>
-                username: <%= currentUser.username %>
-            </p>
-           
-            <% if (currentUser.email) { %>
-                <p>
-                    email: <%= currentUser.email %>
-                </p>
-                <% } %>
-                    <div class="section-content">
-                        <h2>Appointments History</h2>
-                        <table id="activeUsers">
-                            <tr>
-                                <th>First name</th>
-                                <th>Last name</th>
-                                <th>email</th>
-                                <th>Service</th>
-                            </tr>
-                           
-                                <tr>
-                                    <td>FIRST NAME</a></td>
-                                    <td>FIRST NAME</a></td>
-                                    <td>EMAIL</a></td>
-                                    <td>SERVICE</a></td>
-                                </tr>
-                    </div>
-
-                        </table>
-    </div>
-    </section>
-    </div>
-
-
-    <%- include('footer.html') %>
+<main class="main-container">
+  <h1><%= demo ? 'Sample appointments' : 'Your profile' %></h1>
+  <% if (!demo) { %>
+    <p>Username: <%= currentUser.username %></p><p>Email: <%= currentUser.email %></p>
+    <p>Your demo account expires: <%= currentUser.expiresAt.toISOString() %> (UTC)</p>
+    <p><a href="/edit">Edit profile</a> · <a href="/appointment">Request an appointment</a></p>
+  <% } else { %><p>Fictional, read-only examples. These sample records do not expire.</p><% } %>
+  <h2>Appointment requests</h2>
+  <% if (!appointments.length) { %><p>No appointment requests yet.</p><% } %>
+  <div class="table-scroll"><table id="activeUsers"><thead><tr><th>Name</th><th>Email</th><th>Service</th></tr></thead><tbody>
+  <% for (const appointment of appointments) { %>
+    <tr><td><%= appointment.firstName %> <%= appointment.lastName %></td><td><%= appointment.email %></td><td><%= appointment.service %></td></tr>
+  <% } %>
+  </tbody></table></div>
+</main>
+<%- include('footer.html') %>

@@ -15,18 +15,18 @@
         <section id="contact">
             <h1 class="section-header">Appointments</h1>
             <div class="section-content">
-                <form class="contact-form" action="/registration" method="post">
+                <form class="contact-form" action="/appointment" method="post">
                     <input name="_csrf" value="<%= csrfToken %>" type="hidden">
                     
                     <label for="firstName">First name</label>
                     <input type="text" id="firstName" name="firstName" required autofocus placeholder="Your name..">
-                    <label for="firstName">Last name</label>
-                    <input type="text" id="firstName" name="firstName" required autofocus placeholder="Your name..">
+                    <label for="lastName">Last name</label>
+                    <input type="text" id="lastName" name="lastName" required placeholder="Your name..">
 
                     <label for="email">Email</label>
-                    <input type="text" id="email" name="email" placeholder="Enter Email...">
+                    <input type="email" required id="email" name="email" placeholder="Enter Email...">
 
-                    <select name="service" id="service" required>
+                    <label for="service">Service</label><select name="service" id="service" required>
                         <option value="grooming">Grooming</option>
                         <option value="boarding">Boarding</option>
                         <option value="training">Training</option>

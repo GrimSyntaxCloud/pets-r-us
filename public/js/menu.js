@@ -4,10 +4,10 @@ function myFunction() {
   let element = document.getElementById('menuIcon');
   if (navigation.className === "mobile-menu") {
     navigation.className += " responsive";
-    element.className = "fas fa-times";
+    element.textContent = '×';
   } else {
     navigation.className = "mobile-menu";
-    element.className = "fas fa-bars";
+    element.textContent = '☰';
   }
 };
 
@@ -33,3 +33,4 @@ function highlightCurrentLink() {
 }
 
 highlightCurrentLink();
+document.querySelector(".icon").addEventListener("click", event => { event.preventDefault(); myFunction(); event.currentTarget.setAttribute("aria-expanded", document.getElementById("navigationContainer").classList.contains("responsive")); });
