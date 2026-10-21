@@ -14,7 +14,7 @@ This is a demonstration, not a real pet-services booking system: requests do not
 
 ## Pet clubhouse design
 
-The site has a warm, playful visual identity across the homepage, service catalog, registration/login, profile, and appointment forms. Original SVG pet illustrations, a small keyboard-accessible “boop” interaction, responsive navigation, and reduced-motion support are implemented with plain CSS and JavaScript. There is no paid design service, animation library, external font request, or new hosting dependency.
+The site has a warm, playful cream, terracotta, peach, and honey visual identity across the homepage, service catalog, registration/login, profile, and appointment forms. Original SVG pet illustrations, a small keyboard-accessible “boop” interaction, responsive navigation, and reduced-motion support are implemented with plain CSS and JavaScript. There is no paid design service, animation library, external font request, or new hosting dependency.
 
 - Shared navigation and footer: `views/header.html` and `views/footer.html`.
 - Design system and responsive layouts: `public/styles/site.css`.
