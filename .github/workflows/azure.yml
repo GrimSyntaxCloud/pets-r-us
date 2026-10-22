@@ -28,7 +28,7 @@ jobs:
       - run: npm audit --audit-level=low
       - run: npm test
       - run: npm run package:azure
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: pets-r-us
           path: pets-r-us.zip
