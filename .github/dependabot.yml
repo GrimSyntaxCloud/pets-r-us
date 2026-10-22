@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    groups:
+      compatible-updates:
+        patterns: ["*"]
+        update-types: [minor, patch]
+    # Mongoose 9 requires a newer MongoDB protocol than the existing Cosmos account.
+    ignore:
+      - dependency-name: mongoose
+        versions: [">=9.0.0"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
