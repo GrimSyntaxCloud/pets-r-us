@@ -18,7 +18,7 @@
       class="button"
       href="<%= demo ? (currentUser ? '/appointment' : '/registration') : '/appointment' %>"
       ><%= demo ? 'Try it yourself' : 'Plan a visit' %>
-      <span aria-hidden="true">↗</span></a
+      <span aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a
     >
   </div>
   <% if (!demo) { %>
@@ -37,7 +37,7 @@
         <%= currentUser.expiresAt.toISOString().replace('T', ' ').slice(0, 16) %>
       </dd>
     </dl>
-    <a class="text-link" href="/edit">Edit profile ↗</a>
+    <a class="text-link" href="/edit">Edit profile <svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
   </div>
   <% } %>
   <h2><%= demo ? 'Sample appointments' : 'Your appointment requests' %></h2>
@@ -52,7 +52,7 @@
     <h3>A quiet little corner. For now.</h3>
     <p>No appointment requests yet. Let’s put something happy on the list.</p>
     <a class="button" href="/appointment"
-      >Make your first request <span aria-hidden="true">↗</span></a
+      >Make your first request <span aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a
     >
   </div>
   <% } else { %>
