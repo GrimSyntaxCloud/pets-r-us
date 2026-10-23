@@ -12,7 +12,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="demo-strip"><span>A pretend pet place. A real working demo.</span> <a href="/demo">Take a peek inside <span aria-hidden="true">↗</span></a></div>
+<div class="demo-strip"><span>A pretend pet place. A real working demo.</span> <a href="/demo">Take a peek inside <span aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a></div>
 <header class="site-header">
   <a class="brand" href="/" aria-label="Pets-R-Us home"><img src="/images/clubhouse/paw.svg" alt="" width="42" height="42"><span>pets<span class="brand-r">-r-</span>us<span class="brand-dot">.</span></span></a>
   <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" type="button">Menu <span aria-hidden="true">☰</span></button>
@@ -23,10 +23,10 @@
     <% if (currentUser) { %>
     <a href="/profile" <%- appPage === 'Profile' ? 'aria-current="page"' : '' %>>My clubhouse</a>
     <form action="/logout" method="post"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><button class="nav-logout" type="submit">Log out</button></form>
-    <a class="button button-small" href="/appointment">Plan a visit <span aria-hidden="true">↗</span></a>
+    <a class="button button-small" href="/appointment">Plan a visit <span aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a>
     <% } else { %>
     <a href="/login" <%- appPage === 'Login' ? 'aria-current="page"' : '' %>>Log in</a>
-    <a class="button button-small" href="/registration">Join the club <span aria-hidden="true">↗</span></a>
+    <a class="button button-small" href="/registration">Join the club <span aria-hidden="true"><svg class="compat-arrow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a>
     <% } %>
   </nav>
 </header>
