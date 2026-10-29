@@ -15,7 +15,7 @@
     "package:azure": "node scripts/package-azure.js"
   },
   "dependencies": {
-    "@azure/functions": "^4.16.5",
+    "@azure/functions": "^4.17.0",
     "connect-mongo": "^6.0.0",
     "csrf-sync": "^4.2.1",
     "ejs": "^3.1.10",
@@ -23,7 +23,7 @@
     "express-rate-limit": "^8.7.1",
     "express-session": "^1.18.2",
     "helmet": "^8.1.0",
-    "mongoose": "8.24.6",
+    "mongoose": "8.24.7",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "serverless-http": "^4.0.0"
